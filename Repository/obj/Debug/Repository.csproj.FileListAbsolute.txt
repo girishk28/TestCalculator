@@ -1,0 +1,9 @@
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\Repository.dll.config
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\Repository.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\Repository.pdb
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\EntityFramework.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\EntityFramework.xml
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\obj\Debug\Repository.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\Repository\obj\Debug\Repository.pdb

@@ -1,0 +1,12 @@
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\Calculator.dll.config
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\Calculator.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\Calculator.pdb
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\EntityFramework.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\Repository.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\Repository.pdb
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\EntityFramework.xml
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\obj\Debug\Calculator.dll
+C:\Users\MyThink\Documents\Visual Studio 2015\Projects\TestCalculator\SimpleCalculator\obj\Debug\Calculator.pdb
