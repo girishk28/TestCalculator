@@ -33,14 +33,14 @@ namespace Calculator
 
         public void MultiplyToConsole(int numberOne, int numberTwo, int result)
         {
-            _databaseDiagnostics = "The multiplication result of " + numberOne + " - " + numberTwo +
+            _databaseDiagnostics = "The multiplication result of " + numberOne + " * " + numberTwo +
                                    " = " + result;
             AddToDatabaseUsingStoredProcedure(_databaseDiagnostics + SOURCE);
         }
 
         public void DivideToConsole(int numberOne, int numberTwo, int result)
         {
-            _databaseDiagnostics = "The division result of " + numberOne + " - " + numberTwo + " = " + result;
+            _databaseDiagnostics = "The division result of " + numberOne + " / " + numberTwo + " = " + result;
             AddToDatabaseUsingStoredProcedure(_databaseDiagnostics + SOURCE);
         }
 

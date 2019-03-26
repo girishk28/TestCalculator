@@ -18,25 +18,26 @@ namespace Calculator
 
         public void AddToConsole(int numberOne, int numberTwo, int result)
         {
-            _databaseDiagnostics = "The addition result of " + numberOne + "+" + numberTwo + "=" + " +result";
+            _databaseDiagnostics = "The addition result of " + numberOne + " + " + numberTwo + " = " + result;
             AddToDatabaseUsingEntityFramework(_databaseDiagnostics + SOURCE);
         }
 
         public void SubtractToConsole(int numberOne, int numberTwo,int result)
         {
-            _databaseDiagnostics = "The subtraction result of " + numberOne + "-"  + numberTwo + "=" + " +result";
+            _databaseDiagnostics = "The subtraction result of " + numberOne + " - " + numberTwo + " = " + result;
             AddToDatabaseUsingEntityFramework(_databaseDiagnostics + SOURCE);
         }
 
         public void MultiplyToConsole(int numberOne, int numberTwo,int result)
         {
-            _databaseDiagnostics = "The multiplication result of "  + numberOne +  "*" + numberTwo +  "=" + " +result";
+            _databaseDiagnostics = "The multiplication result of " + numberOne + " * " + numberTwo +
+                                   " = " + result;
             AddToDatabaseUsingEntityFramework(_databaseDiagnostics + SOURCE);
         }
 
         public void DivideToConsole(int numberOne, int numberTwo,int result)
         {
-            _databaseDiagnostics = "The division result of " +numberOne + "/" + numberTwo +  "=" + "result}";
+            _databaseDiagnostics = "The division result of " + numberOne + " / " + numberTwo + " = " + result;
             AddToDatabaseUsingEntityFramework(_databaseDiagnostics + SOURCE);
         }
 

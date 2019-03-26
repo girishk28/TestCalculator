@@ -17,6 +17,8 @@ namespace SimpleCalculatorConsole
     class Program
     {
         static int userInput = 0;
+        private const string resourceUrlEntity = "api/v1/Calculator/EF/";
+        private const string resourceUrlStoredProcedure = "api/v1/Calculator/SP/";
 
         static void Main(string[] args)
         {
@@ -55,6 +57,7 @@ namespace SimpleCalculatorConsole
             userInput = 0;
             int numberOne = 0;
             int numberTwo = 0;
+            int accessType;
             string action = string.Empty;
             do
             {
@@ -67,17 +70,25 @@ namespace SimpleCalculatorConsole
                     case 3:
                     case 4:
                         Console.WriteLine();
-                        Console.Write("Enter Number 1 : ");
+                        Console.Write("Enter the first number : ");
                         numberOne = Convert.ToInt32(Console.ReadLine());
                         Console.WriteLine();
-                        Console.Write("Enter Number 2 : ");
+                        Console.Write("Enter the second number : ");
                         numberTwo = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine();
+                        Console.WriteLine("Choose an Access Type : ");
+                        Console.WriteLine();
+                        Console.WriteLine("1. Using Entity Framework");
+                        Console.WriteLine("2. Using Stored Procedure");
+                        Console.WriteLine();
+                        Console.Write("Enter your choice : ");
+                        accessType = Convert.ToInt32(Console.ReadLine());
                         action = userInput == 1
                             ? "add"
                             : userInput == 2
                                 ? "subtract"
                                 : userInput == 3 ? "multiply" : userInput == 4 ? "divide" : string.Empty;
-                        CalculatorAPI(client, action, numberOne, numberTwo).Wait();
+                        CalculatorAPI(client, action, numberOne, numberTwo, accessType).Wait();
                         break;
                     case 5:
                         break;
@@ -91,29 +102,84 @@ namespace SimpleCalculatorConsole
         /// </summary>
         public static void OutputToDatabase()
         {
+              int result  = 0;
+            
+            do
+            {
+                Console.WriteLine();
+                Console.WriteLine("Output Diagnostics to Database");
+                Console.WriteLine();
+                Console.WriteLine("1. Using Entity Framework");
+                Console.WriteLine("2. Using Stored Procedure Framework");
+                Console.WriteLine("3. Exit");
+                Console.WriteLine();
+                Console.Write("Enter your choice : ");
+
+                result =   Convert.ToInt32(Console.ReadLine());
+
+                switch (result)
+                {
+                    case 1:
+                          DataAccess("DbEntity");
+                        break;
+                    case 2:
+                          DataAccess("DbStoredProc");
+                        break;
+                    case 3:
+                        break;
+                }
+            } while (result != 3);
+           
+       }
+
+        /// <summary>
+        /// Performs the data access operation bases on the selected access layer
+        /// </summary>
+        /// <param name="source"></param>
+        public static void DataAccess(string source)
+        {
             IKernel kernel = new StandardKernel();
             kernel.Load(Assembly.GetExecutingAssembly());
-            //using entity framework
-            var calculatorDiagnostics = kernel.Get<IDiagnostics>("DbEntity");
+
+
+            var calculatorDiagnostics = kernel.Get<IDiagnostics>(source);
             var dummyDiagnostics = kernel.Get<IDummyDiagnostics>();
 
             ISimpleCalculator calculator = new SimpleCalculatorClass(calculatorDiagnostics, dummyDiagnostics);
-            calculator.Add(1, 8);
-            calculator.Subtract(10, 4);
-            calculator.Multiply(5, 2);
-            calculator.Divide(20, 10);
 
-            //using stored procedure
+            Console.WriteLine();
+            Console.Write("Enter the first number : ");
 
-         
+            var firstNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.Write("Enter the second number : ");
+            var secondNumber = Convert.ToInt32(Console.ReadLine());
+
+
+            calculator.Add(firstNumber, secondNumber);
+            calculator.Subtract(firstNumber, secondNumber);
+            calculator.Multiply(firstNumber, secondNumber);
+            calculator.Divide(firstNumber, secondNumber);
+            Console.WriteLine();
+            Console.WriteLine("Successfully updated to database !");
         }
 
-        static async Task CalculatorAPI(HttpClient client, string action, int numberOne, int numberTwo)
+        /// <summary>
+        /// Calls the Calculator API
+        /// </summary>
+        /// <param name="client">Http Client</param>
+        /// <param name="action">The operation to be performed</param>
+        /// <param name="numberOne">The first number</param>
+        /// <param name="numberTwo">The second number</param>
+        /// <returns></returns>
+        static async Task CalculatorAPI(HttpClient client, string action, int numberOne, int numberTwo, int accessType)
         {
             using (client)
             {
                 var calculator = new CalculatorRequest {NumberOne = numberOne, NumberTwo = numberTwo};
-                HttpResponseMessage response = await client.PostAsJsonAsync("api/v1/Calculator/" + action, calculator);
+                var resourceUrl = accessType == 1 ? resourceUrlEntity : resourceUrlStoredProcedure;
+                HttpResponseMessage response = await client.PostAsJsonAsync(resourceUrl + action, calculator);
                 response.EnsureSuccessStatusCode();
                 if (response.IsSuccessStatusCode)
                 {
@@ -172,11 +238,12 @@ namespace SimpleCalculatorConsole
         /// <returns></returns>
         public static int DisplayMainMenu()
         {
-            Console.WriteLine("This console application provides two operations....");
+            Console.WriteLine("\n*********** CALCULATOR APPLICATION MAIN MENU *******************");
             Console.WriteLine();
             Console.WriteLine("1. Output the calculation operation and stores it to Database");
             Console.WriteLine("2. Call Calculator API to perform calculation operation");
             Console.WriteLine("3. Exit");
+            Console.WriteLine("\n****************************************************************");
             Console.WriteLine();
             Console.Write("Enter your choice : ");
 

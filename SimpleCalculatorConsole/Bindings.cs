@@ -13,8 +13,10 @@ namespace SimpleCalculatorConsole
     {
         public override void Load()
         {
+            Bind<ICalculatorRepository>().To<CalculatorRepositoryEntityFramework>().Named("EF");
+            Rebind<ICalculatorRepository>().To<CalculatorRepositoryStoredProcedure>().Named("Sotred");
             Bind<IDiagnostics>().To<DbUsingEntityFramework>().Named("DbEntity");
-            Bind<ICalculatorRepository>().To<CalculatorRepositoryEntityFramework>();
+            Bind<IDiagnostics>().To<DbUsingStoredProcedure>().Named("DbStoredProc");
             Bind<IDummyDiagnostics>().To<DummyDiagnostics>();
             Bind<ISimpleCalculator>().To<SimpleCalculator>();
         }
